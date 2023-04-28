@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<h5 class="text-center">Register a new admin user</h5>
+<br>
+<form method="POST">
+    {% csrf_token %}
+    {% crispy form %}
+</form>
+
+{% endblock content %}

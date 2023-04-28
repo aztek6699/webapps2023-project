@@ -1,0 +1,75 @@
+{% if user.is_authenticated %}
+
+    {% if user.is_staff %}
+        <h6>Welcome ADMIN: {{ user.first_name }} {{ user.last_name }}</h6>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse">
+
+                    <!-- Left links -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-1">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'all_user' %}">All Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'all_transfer' %}">All Transfers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'all_request' %}">All Requests</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register_admin' %}">Register Admin</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="d-flex align-items-center">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <br>
+
+    {% else %}
+        <h6>Welcome {{ user.first_name }} {{ user.last_name }}</h6>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse">
+
+                    <!-- Left links -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-1">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account' %}">Account</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'search' %}">Create Transfer or Request</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'pending_requests' %}">Pending Requests</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'history' %}">History</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="d-flex align-items-center">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <br>
+    {% endif %}
+
+{% endif %}
+

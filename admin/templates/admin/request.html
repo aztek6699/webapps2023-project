@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+table {
+  border-collapse: collapse;
+}
+th {
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+th:last-child {
+  border-right: none;
+}
+td {
+  border-right: 1px solid black;
+}
+td:last-child {
+  border-right: none;
+}
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h5>All Requests</h5>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Patron Email</th>
+                    <th>Receiver Email</th>
+                    <th>Amount</th>
+                    <th>Converted Amount</th>
+                    <th>Patron Previous Amount</th>
+                    <th>Patron New Amount</th>
+                    <th>Patron Currency</th>
+                    <th>Receiver Previous Amount</th>
+                    <th>Receiver New Amount</th>
+                    <th>Receiver Currency</th>
+                    <th>Pending</th>
+                    <th>Accepted</th>
+                    <th>Date Requested</th>
+                    <th>Date Completed</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for request in requests %}
+                <tr>
+                    <td>{{ request.patron_email }}</td>
+                    <td>{{ request.receiver_email }}</td>
+                    <td>{{ request.amount }}</td>
+                    <td>{{ request.converted_amount }}</td>
+                    <td>{{ request.patron_prev_amount }}</td>
+                    <td>{{ request.patron_new_amount }}</td>
+                    <td>{{ request.patron_currency_at_time }}</td>
+                    <td>{{ request.receiver_prev_amount }}</td>
+                    <td>{{ request.receiver_new_amount }}</td>
+                    <td>{{ request.receiver_currency_at_time }}</td>
+                    <td>{{ request.pending }}</td>
+                    <td>{{ request.accepted }}</td>
+                    <td>{{ request.date_requested }}</td>
+                    <td>{{ request.date_completed }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="14">No transfers found!</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+

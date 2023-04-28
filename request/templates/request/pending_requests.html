@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn-accept {
+    background-color: #4CAF50;
+}
+
+.btn-reject {
+    background-color: #f44336;
+}
+
+.btn-cancel {
+    background-color: #2196F3;
+}
+
+</style>
+
+<h5>Pending Requests</h5>
+<br>
+
+<h6 class="text-center">Incoming Requests - people asking you for money</h6>
+<table>
+    <thead>
+    <tr>
+        <th>Receiver Email</th>
+        <th>Amount</th>
+        <th>Currency</th>
+        <th>Date Requested</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in incoming_requests %}
+    <tr>
+        <td>{{ i.receiver_email }}</td>
+        <td>{% if i.converted_amount > 0 %}{{ i.converted_amount }}{% else %}{{ i.amount }}{% endif %}</td>
+        <td>{{ i.patron_currency_at_time }}</td>
+        <td>{{ i.date_requested }}</td>
+        <td>
+            <button class="btn btn-accept" onclick="acceptRequest({{ i.id }})">Accept</button>
+        </td>
+        <td>
+            <button class="btn btn-reject" onclick="rejectRequest({{ i.id }})">Reject</button>
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="11" class="text-center">No incoming requests found!</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<br>
+<br>
+<h6 class="text-center">Outgoing Requests - you asking people for money</h6>
+<table style="width:100%">
+    <tr>
+        <th>Patron Email</th>
+        <th>Amount</th>
+        <th>Currency</th>
+        <th>Date Requested</th>
+    </tr>
+    {% for i in outgoing_requests %}
+    <tr>
+        <td>{{ i.patron_email }}</td>
+        <td>{{ i.amount }}</td>
+        <td>{{ i.receiver_currency_at_time }}</td>
+        <td>{{ i.date_requested }}</td>
+        <td>
+            <button class="btn btn-cancel" onclick="cancelRequest({{ i.id }})">Cancel</button>
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="11" class="text-center">No outgoing requests found!</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<script>
+    function acceptRequest(id) {
+      fetch('/request/accept/' + id)
+        .then(response => {
+            location.reload();
+        });
+    }
+
+    function rejectRequest(id) {
+      fetch('/request/reject/' + id)
+        .then(response => {
+            location.reload();
+        });
+    }
+
+    function cancelRequest(id) {
+      fetch('/request/cancel/' + id)
+        .then(response => {
+            location.reload();
+        });
+    }
+</script>
+
+{% endblock content %}

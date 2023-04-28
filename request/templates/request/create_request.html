@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Create Request</h2>
+
+<p>Email: {{ patron.email }}</p>
+<p>Name: {{ patron.first_name }} {{ patron.last_name }}</p>
+<p>Currency: {{ patron.currency }}</p>
+<br>
+
+{% load crispy_forms_tags %}
+<form method="POST">
+  {% csrf_token %}
+  {% crispy form %}
+</form>
+
+
+{% endblock content %}

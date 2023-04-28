@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Create Transfer</h2>
+
+<p>Email: {{ receiver.email }}</p>
+<p>Name: {{ receiver.first_name }} {{ receiver.last_name }}</p>
+<p>Currency: {{ receiver.currency }}</p>
+<br>
+
+{% load crispy_forms_tags %}
+<form method="POST">
+    {% csrf_token %}
+    {% crispy form %}
+</form>
+
+
+{% endblock content %}

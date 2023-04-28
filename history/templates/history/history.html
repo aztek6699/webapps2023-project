@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+table {
+  border-collapse: collapse;
+}
+th {
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+th:last-child {
+  border-right: none;
+}
+td {
+  border-right: 1px solid black;
+}
+td:last-child {
+  border-right: none;
+}
+.btn-accept:hover {
+    background-color: #3e8e41;
+}
+.btn-reject:hover {
+    background-color: #f44336;
+}
+.btn-cancel:hover {
+    background-color: #0b7dda;
+}
+</style>
+
+<!----------------------------------------------TRANSFER HISTORY----------------------------------------------------->
+
+<h5>Transfer History</h5>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h6>Outgoing Transfers</h6>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Receiver Email</th>
+                    <th>Amount</th>
+                    <th>Currency</th>
+                    <th>Previous Amount</th>
+                    <th>New Amount</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in outgoing_transfers %}
+                <tr>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.account_balance }}</td>
+                    <td>{{ user.currency }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6">No outgoing transfers!</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h6>Incoming Transfers</h6>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Sender Email</th>
+                    <th>Amount</th>
+                    <th>Currency</th>
+                    <th>Previous Amount</th>
+                    <th>New Amount</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in incoming_transfers %}
+                <tr>
+                    <td>{{ i.sender_email }}</td>
+                    <td>
+                        {% if i.converted_amount > 0 %} {{ i.converted_amount }} {% else %} {{ i.amount }} {% endif %}
+                    </td>
+                    <td>{{ i.receiver_currency_at_time }}</td>
+                    <td>{{ i.receiver_prev_amount }}</td>
+                    <td>{{ i.receiver_new_amount }}</td>
+                    <td>{{ i.date }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6">No incoming transfers!</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<br>
+<hr class="hr"/>
+<br>
+
+<h5>Request History</h5>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h6>Outgoing Requests - people you asked for money</h6>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Patron Email</th>
+                    <th>Amount</th>
+                    <th>Currency</th>
+                    <th>Previous Amount</th>
+                    <th>New Amount</th>
+                    <th>Date Created</th>
+                    <th>Date Completed</th>
+                    <th>Accepted</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in outgoing_requests %}
+                <tr>
+                    <td>{{ i.patron_email }}</td>
+                    <td>
+                        {% if i.converted_amount > 0 %} {{ i.converted_amount }} {% else %} {{ i.amount }} {% endif %}
+                    </td>
+                    <td>{{ i.receiver_currency_at_time }}</td>
+                    <td>{{ i.receiver_prev_amount }}</td>
+                    <td>{{ i.receiver_new_amount }}</td>
+                    <td>{{ i.date_requested }}</td>
+                    <td>{{ i.date_completed }}</td>
+                    <td>{{ i.accepted }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="8">No outgoing requests!</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h6>Incoming Requests - people who asked you for money</h6>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Receiver Email</th>
+                    <th>Amount</th>
+                    <th>Currency</th>
+                    <th>Previous Amount</th>
+                    <th>New Amount</th>
+                    <th>Date Created</th>
+                    <th>Date Completed</th>
+                    <th>Accepted</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in incoming_requests %}
+                <tr>
+                    <td>{{ i.receiver_email }}</td>
+                    <td>
+                        {% if i.converted_amount > 0 %} {{ i.converted_amount }} {% else %} {{ i.amount }} {% endif %}
+                    </td>
+                    <td>{{ i.patron_currency_at_time }}</td>
+                    <td>{{ i.patron_prev_amount }}</td>
+                    <td>{{ i.patron_new_amount }}</td>
+                    <td>{{ i.date_requested }}</td>
+                    <td>{{ i.date_completed }}</td>
+                    <td>{{ i.accepted }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="8">No incoming requests!</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

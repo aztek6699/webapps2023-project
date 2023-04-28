@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn-transfer {
+    background-color: #4CAF50;
+}
+
+.btn-request {
+    background-color: #2196F3;
+}
+
+</style>
+
+<table>
+    <thead>
+    <tr>
+        <th>First Name&emsp;</th>
+        <th>Last Name&emsp;</th>
+        <th>Email&emsp;</th>
+        <th>Currency&emsp;</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in results %}
+    <tr>
+        <td>{{ i.first_name }}</td>
+        <td>{{ i.last_name }}</td>
+        <td>{{ i.email }}</td>
+        <td>{{ i.currency }}</td>
+        <td>
+            <a href="{% url 'transfer' email=i.email %}">
+                <button class="btn btn-transfer" type="button">Transfer</button>
+            </a>
+        </td>
+        <td>
+            <a href="{% url 'create_request' email=i.email %}">
+                <button class="btn btn-request" type="button">Request</button>
+            </a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="11" class="text-center">No incoming requests found!</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}

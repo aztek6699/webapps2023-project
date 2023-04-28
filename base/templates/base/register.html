@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<div style="padding: 40px;">
+    <h3 class="text-center">Register a new account</h3>
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+        {% crispy form %}
+    </form>
+</div>
+
+{% endblock content %}

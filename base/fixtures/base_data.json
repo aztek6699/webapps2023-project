@@ -1,0 +1,122 @@
+[
+  {
+    "model": "base.customuser",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$hth6WuoUpwOynzxtkjEFdV$KRBxaHGp38ozvWU9+iXcHD9DteHLVRi7QHXjTMyUuco=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "usd1",
+      "first_name": "usd",
+      "last_name": "1",
+      "email": "usd1@mail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-04-24T02:05:27.795Z",
+      "account_balance": "1330.00",
+      "currency": "usd",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "base.customuser",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$xPfHPKwhMmX3usZIPfgDK9$VXwHIIASjEH6DVdpTif7VB8fjEj+A1S6NxU+SBrG6mw=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "usd2",
+      "first_name": "usd",
+      "last_name": "2",
+      "email": "usd2@mail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-04-24T02:05:42.918Z",
+      "account_balance": "1330.00",
+      "currency": "usd",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "base.customuser",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$DHbK1vcjVrg0VCMkX6Xgzv$KpaEtZFim5e7qqM62q8DUJ5hkjIYUuFE8wsybsCIjnw=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "gbp1",
+      "first_name": "gbp",
+      "last_name": "1",
+      "email": "gbp1@mail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-04-24T02:05:59.566Z",
+      "account_balance": "1000.00",
+      "currency": "gbp",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "base.customuser",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$gYYrQVPfm0ijyDl6K9UXBK$9jkv3lKRmgDMElpB3rxnhyIugb0/xVesQddrzM5nhno=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "gbp2",
+      "first_name": "gbp",
+      "last_name": "2",
+      "email": "gbp2@mail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-04-24T02:06:13.469Z",
+      "account_balance": "1000.00",
+      "currency": "gbp",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "base.customuser",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$agCHHRiNJgFospSZ1BpnsH$JOJQAQxhoR1o5HTn/uTV7c73A9pnnVc0UyUu408n+hU=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "euro1",
+      "first_name": "euro",
+      "last_name": "1",
+      "email": "euro1@mail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-04-24T02:06:29.466Z",
+      "account_balance": "1110.00",
+      "currency": "eur",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "base.customuser",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$ycDqRRqXxkh20KOEbjU9lr$NeSRUJHrQ6PtVqX7M8tiWvupcxr8vE6F0VJcckx4IX0=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "euro2",
+      "first_name": "euro",
+      "last_name": "2",
+      "email": "euro2@mail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-04-24T02:06:47.069Z",
+      "account_balance": "1110.00",
+      "currency": "eur",
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]
